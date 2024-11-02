@@ -1,21 +1,39 @@
+/**
+ * To store timer counter
+ */
 let counter = 0;
 
+/**
+ * To store interval timer
+ */
 let timer;
 
+/**
+ * Number of stopping counter
+ */
 let counterStopNumber = 0;
 
+/**
+ * This function start the timer
+ */
 function setTimer() {
   timer = setInterval(function () {
+    // Counting
     counter += 1;
 
+    // If timer is equal to user input value
     if (counter === counterStopNumber) {
       timerRestart();
     }
 
+    // Show counting to user
     showResult(counter);
   }, 1000);
 }
 
+/**
+ * this function managing play the timer
+ */
 function timerStart() {
   // Get user inputs
   const number = document.getElementById("user-input").value;
@@ -25,17 +43,26 @@ function timerStart() {
     return;
   }
 
+  // Convert string value to number
   const convertToNumber = Number(number);
 
+  // Set counter stop number
   counterStopNumber = convertToNumber;
 
+  // Start the timer
   setTimer();
 }
 
+/**
+ * This function stop the timer
+ */
 function timerStop() {
   clearInterval(timer);
 }
 
+/**
+ * This function managing process of reset the timer
+ */
 function timerRestart() {
   timerStop();
   counter = 0;
@@ -51,6 +78,13 @@ function showResult(text) {
   document.getElementById("result").textContent = text;
 }
 
+/**
+ * This management function checks whether the given value is a valid number under the following conditions
+ * - Not string
+ * - Not NaN
+ * - Not less and equal then 0
+ * - Not Float
+ */
 function isValidNumber(number) {
   if (isNaN(Number(number))) {
     showResult("⚠️ Not a Number");
@@ -69,6 +103,7 @@ function isValidNumber(number) {
   return true;
 }
 
+// Active listeners
 document.getElementById("user-start").addEventListener("click", timerStart);
 document.getElementById("user-stop").addEventListener("click", timerStop);
 document.getElementById("user-restart").addEventListener("click", timerRestart);
