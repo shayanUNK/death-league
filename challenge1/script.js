@@ -1,17 +1,22 @@
+// create array for data
 const operation = ["+", "-", "*", "/", "**", "!", "isPrime"];
 
+// function for addition operation
 function operationAdd(x, y) {
   showResult(`${x} + ${y} = ${x + y}`);
 }
 
+// function for sub operation
 function operationSub(x, y) {
   showResult(`${x} - ${y} = ${x - y}`);
 }
 
+// function for multiplication operation
 function operationMul(x, y) {
   showResult(`${x} * ${y} = ${x * y}`);
 }
 
+// function for division operation
 function operationDiv(x, y) {
   if (y === 0) {
     showResult("Error: Division by zero");
@@ -21,10 +26,12 @@ function operationDiv(x, y) {
   showResult(`${x} * ${y} = ${x * y}`);
 }
 
+// function for power operation
 function operationPow(x, y) {
   showResult(`${x} ** ${y} = ${x ** y}`);
 }
 
+// function for factorial operation
 function operationFactorial(number) {
   if (number === 0) {
     return 1;
@@ -33,6 +40,7 @@ function operationFactorial(number) {
   }
 }
 
+// function for isPrime operation
 function operationIsPrime(number) {
   for (let i = 2, s = Math.sqrt(number); i <= s; i++) {
     if (number % i === 0) return false;
@@ -41,6 +49,7 @@ function operationIsPrime(number) {
   return number > 1;
 }
 
+// function to get user operation and check it
 function getUserOperation() {
   while (true) {
     let userInput = prompt(`Enter the Operation ${operation}`, "0");
@@ -52,6 +61,7 @@ function getUserOperation() {
   }
 }
 
+//  function to get number from user
 function getUserNumber() {
   while (true) {
     let userInput = prompt(`Enter the number`, "0");
@@ -63,6 +73,7 @@ function getUserNumber() {
   }
 }
 
+// function for show error with alert
 function isValidNumber(number) {
   if (isNaN(Number(number))) {
     showResult("⚠️ Not a Number");
@@ -75,15 +86,19 @@ function isValidNumber(number) {
   return true;
 }
 
+// alert to show result
 function showResult(text) {
   alert(text);
 }
 
+// Script Loop
 while (true) {
+  // Get User Operation
   const userOperation = getUserOperation();
   const userNumber1 = getUserNumber();
   const userNumber2 = getUserNumber();
 
+  // Checking operation
   switch (userOperation) {
     case "+":
       operationAdd(userNumber1, userNumber2);
